@@ -1,2 +1,2 @@
 # My-Notes
-My Notes app for user notes
+Simple notes app built with vanilla JS. Work in progress.
