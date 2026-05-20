@@ -2,6 +2,13 @@ const noteTitle = document.querySelector('#noteTitle');
 const noteText = document.querySelector('#noteText');
 const saveBtn = document.querySelector('#saveBtn');
 const notesContainer = document.querySelector('#notesContainer');
+const modal = document.querySelector('#modal');
+const editTitle = document.querySelector('#editTitle');
+const editText = document.querySelector('#editText');
+const modalSaveBtn = document.querySelector('#modalSaveBtn');
+const modalCancelBtn = document.querySelector('#modalCancelBtn');
+
+let editingId = null;
 
 let notes = [];
 
@@ -21,6 +28,24 @@ function loadNotes() {
 }
 
 
+function openModal(note) {
+    editingId = note.id;
+    editTitle.value = note.title;
+    editText.value = note.text;
+    modal.classList.remove('hidden');
+}
+function closeModal() {
+    editingId = null;
+    editTitle.value = '';
+    editText.value = '';
+    modal.classList.add('hidden');
+}
+
+
+modalCancelBtn.addEventListener('click', closeModal);
+
+
+
 function renderNotes() {
     notesContainer.innerHTML = '';
 
@@ -32,6 +57,11 @@ function renderNotes() {
     notes.forEach((note) => {
         const noteCard = document.createElement('div');
         noteCard.classList.add('note-card');
+
+        noteCard.addEventListener('click', (e) => {
+            if (e.target.classList.contains('delete-btn')) return;
+            openModal(note);
+        });
 
         const noteTitleElement = document.createElement('h3');
         noteTitleElement.classList.add('note-title');
@@ -53,6 +83,7 @@ function renderNotes() {
         noteCard.appendChild(noteTextElement)
         noteCard.appendChild(deleteBtn);
         notesContainer.appendChild(noteCard)
+
     });
 }
 
@@ -82,3 +113,21 @@ saveBtn.addEventListener('click', () => {
 });
 
 loadNotes();
+
+
+modalSaveBtn.addEventListener('click', ()=> {
+    const note = notes.find(n => n.id === editingId);
+    
+    if (note) {
+        note.title = editTitle.value.trim();
+        note.text = editText.value.trim();
+
+        if (note.title === '' && note.text === '') {
+            deleteNote(editingId);
+        } else {
+            saveNotes();
+            renderNotes();
+        }
+        closeModal();
+    }
+});
