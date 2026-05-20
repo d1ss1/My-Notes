@@ -7,13 +7,26 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
+<div class="container">
     <h1>My Notes</h1>
     <input id="noteTitle" type="text" placeholder="Enter title...">
     <textarea id="noteText" placeholder="Write your note..."></textarea>
     <button id="saveBtn">Save</button>
     <div id="notesContainer"></div>
+</div>
+
+<div id="modal" class="modal hidden">
+    <div class="modal-content">
+        <h2>Edit Note</h2>
+        <input id="editTitle" type="text" placeholder="Edit title...">
+        <textarea id="editText" placeholder="Edit note..."></textarea>
+        <div class="modal-buttons">
+            <button id="modalSaveBtn">Save</button>
+            <button id="modalCancelBtn">Cancel</button>
+        </div>
     </div>
-    <script src="script.js"></script>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
