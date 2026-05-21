@@ -141,5 +141,3 @@ modal.addEventListener('click', (e) => {
     }
 });
 
-noteTitleElement.textContent = note.title || 'Untitled';
-noteTextElement.textContent = note.text || 'No description...';
