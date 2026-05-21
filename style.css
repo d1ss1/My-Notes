@@ -207,16 +207,21 @@ input:focus, textarea:focus {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     color: #e6edf3;
-    border-radius: 6px;
+    border: 1px solid rgba( 46, 160, 67, 0.35);
+    border-radius: 10px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: background all 0.3s ease, color 0.3s ease, box-shadow 0.3 ease, transform 0.3s ease;
+    box-shadow: 0 6px 14px rgba( 46, 160, 67, 0.18);
+    appearance: none;
+    -webkit-appearance: none;
 }
 
 #modalSaveBtn:hover {
     background: rgba(46, 160, 67, 0.6);
     color: #ffffff;
     border-color:  rgba(46, 160, 67, 0.5);
+    box-shadow: 0 8px 18px rgba( 46, 160, 67, 0.24);
 }
 
 #modalCancelBtn {
