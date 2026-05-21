@@ -65,11 +65,11 @@ function renderNotes() {
 
         const noteTitleElement = document.createElement('h3');
         noteTitleElement.classList.add('note-title');
-        noteTitleElement.textContent = note.title
+        noteTitleElement.textContent = note.title || 'Untitled'
 
         const noteTextElement = document.createElement('p')
         noteTextElement.classList.add('note-text')
-        noteTextElement.textContent = note.text
+        noteTextElement.textContent = note.text || 'No description...'
 
 
         const deleteBtn = document.createElement('button');
@@ -115,19 +115,31 @@ saveBtn.addEventListener('click', () => {
 loadNotes();
 
 
-modalSaveBtn.addEventListener('click', ()=> {
-    const note = notes.find(n => n.id === editingId);
+modalSaveBtn.addEventListener('click', () => {
+    const note = notes.find((n) => n.id === editingId);
     
-    if (note) {
-        note.title = editTitle.value.trim();
-        note.text = editText.value.trim();
+    if (!note) return; 
 
-        if (note.title === '' && note.text === '') {
-            deleteNote(editingId);
-        } else {
-            saveNotes();
-            renderNotes();
-        }
+    note.title = editTitle.value.trim();
+    note.text = editText.value.trim();
+
+
+    saveNotes();
+    renderNotes();    
+    closeModal();
+});
+
+window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+        closeModal()
+    }
+});
+
+modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
         closeModal();
     }
 });
+
+noteTitleElement.textContent = note.title || 'Untitled';
+noteTextElement.textContent = note.text || 'No description...';
