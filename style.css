@@ -81,7 +81,7 @@ input:focus, textarea:focus {
     transform: translateY(-3px);
     border-color: rgba(76, 141, 255, 0.3);
     box-shadow: 
-    0 8px 24 rgba( 0, 0, 0, 0.3)
+    0 8px 24px rgba( 0, 0, 0, 0.3)
     inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
 .note-title {
@@ -229,7 +229,7 @@ input:focus, textarea:focus {
     padding: 12px;
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
-    -wedkit-backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     color: #8b949e;
     border: 1px solid #30363d;
     border-radius: 6px;
