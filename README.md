@@ -1,7 +1,7 @@
 # My Notes ✏️
 
 
-## [Live Demo] (https://d1ss1.github.io/My-Notes/)
+## [Live Demo](https://d1ss1.github.io/My-Notes/)
 
 
 ## Features
